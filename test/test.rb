@@ -14,7 +14,7 @@ puts "Auth0.client_secret => #{Auth0.client_secret}"
 
 client = Auth0.client
 p Time.now
-client.users
+p client.users
 client.users
 client.users
 client.users
