@@ -31,8 +31,30 @@ class Auth0::Client
         body = {
           email: email,
           # verify: false
-        }
+        }.merge(options)
         put("/api/users/#{user_id}/email?access_token=#{@token}", body: body)
+      end
+    end
+
+    def change_user_password_by_id(user_id, password, options={})
+      get_auth_token do
+        body = {
+          password: password,
+          # verify: false
+        }.merge(options)
+        put("/api/users/#{user_id}/password?access_token=#{@token}", body: body)
+      end
+    end
+
+    def change_user_password_by_email(email, password, options={})
+      get_auth_token do
+        body = {
+          email: email,
+          password: password,
+          connection: "Username-Password-Authentication"#,
+          # verify: false
+        }.merge(options)
+        put("/api/users/#{email}/password?access_token=#{@token}", body: body)
       end
     end
 

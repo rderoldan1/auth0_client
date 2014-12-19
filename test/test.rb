@@ -24,6 +24,10 @@ begin
   p "Updating email"
   p client.update_user_email(last_client["user_id"], "c@c.com")
   p Time.now
+  p "Updating password by id"
+  p client.change_user_password_by_id(last_client["user_id"], "313131")
+  p "Updating password by email"
+  p client.change_user_password_by_email("c@c.com", "444444")
 rescue => e
   puts e
 end
