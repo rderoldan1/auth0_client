@@ -21,7 +21,7 @@ module Auth0
       self.endpoint       = ENV['AUTH0_ENDPOINT']
       self.client_id      = ENV['AUTH0_CLIENT_ID']
       self.client_secret  = ENV['AUTH0_CLIENT_Secret']
-      self.user_agent     = DEFAULT_USER_AGENT
+      #self.user_agent     = DEFAULT_USER_AGENT
     end
   end
 end
