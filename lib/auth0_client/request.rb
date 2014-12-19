@@ -2,7 +2,7 @@ require 'httparty'
 require 'json'
 
 module Auth0
-  module Request
+  class Request
     include HTTParty
     format :json
     headers 'Accept' => 'application/json'

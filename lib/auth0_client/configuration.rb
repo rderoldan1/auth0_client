@@ -1,7 +1,7 @@
 module Auth0
-  class Configuration
+  module Configuration
     # An array of valid keys in the options hash when configuring a Gitlab::API.
-    VALID_OPTIONS_KEYS = [:endpoint, :private_token, :user_agent, :sudo, :httparty].freeze
+    VALID_OPTIONS_KEYS = [:endpoint, :client_id, :client_secret, :user_agent, :sudo, :httparty].freeze
 
     attr_accessor(*VALID_OPTIONS_KEYS)
 
