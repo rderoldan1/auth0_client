@@ -14,14 +14,6 @@ puts "Auth0.client_secret => #{Auth0.client_secret}"
 
 client = Auth0.client
 p Time.now
+p client.users(criteria: "loginsCount:10")
 p client.users
-client.users
-client.users
-client.users
-client.users
-client.users
-client.users
-client.users
-client.users
-client.users
 p Time.now
