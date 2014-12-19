@@ -8,19 +8,19 @@ module Auth0
     headers 'Accept' => 'application/json'
 
     def get(path, options={})
-      validate self.class.get(@endpoint + path, options)
+      validate self.class.get(URI.encode(@endpoint + path), options)
     end
 
     def post(path, options={})
-      validate self.class.post(@endpoint + path, options)
+      validate self.class.post(URI.encode(@endpoint + path), options)
     end
 
     def put(path, options={})
-      validate self.class.put(@endpoint + path, options)
+      validate self.class.put(URI.encode(@endpoint + path), options)
     end
 
     def delete(path, options={})
-      validate self.class.delete(@endpoint + path, options)
+      validate self.class.delete(URI.encode(@endpoint + path), options)
     end
 
     # Checks the response code for common errors.
