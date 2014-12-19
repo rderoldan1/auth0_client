@@ -15,11 +15,11 @@ module Auth0
     end
 
     def authenticate
-      post("/oauth/token", body: {
-                                    client_id:      @client_id,
-                                    client_secret:  @client_secret,
-                                    grant_type:     "client_credentials"
-                                  })
+      @access_token ||= post("/oauth/token", body: {
+                                                      client_id:      @client_id,
+                                                      client_secret:  @client_secret,
+                                                      grant_type:     "client_credentials"
+                                                    })
     end
   end
 end
