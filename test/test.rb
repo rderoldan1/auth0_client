@@ -28,6 +28,10 @@ begin
   p client.change_user_password_by_id(last_client["user_id"], "313131")
   p "Updating password by email"
   p client.change_user_password_by_email("c@c.com", "444444")
+  # p "Deleting an user"
+  # p client.delete_user(last_client["user_id"])
+  p "Delete all users"
+  p client.delete_users
 rescue => e
   puts e
 end

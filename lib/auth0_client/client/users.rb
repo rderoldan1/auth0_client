@@ -58,6 +58,18 @@ class Auth0::Client
       end
     end
 
+    def delete_users
+      get_auth_token do
+        delete("/api/users?access_token=#{@token}")
+      end
+    end
+
+    def delete_user(user_id, options={})
+      get_auth_token do
+        delete("/api/users/#{user_id}?access_token=#{@token}")
+      end
+    end
+
     private
 
       def get_auth_token
