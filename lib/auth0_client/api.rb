@@ -14,12 +14,24 @@ module Auth0
       set_request_defaults @endpoint, @client_id, @client_secret
     end
 
+    def get_access_token
+      post("/oauth/token", body: {
+                                    client_id:      @client_id,
+                                    client_secret:  @client_secret,
+                                    grant_type:     "client_credentials"
+                                  }).merge({ timestamp: Time.now })
+    end
+
     def authenticate
-      @access_token ||= post("/oauth/token", body: {
-                                                      client_id:      @client_id,
-                                                      client_secret:  @client_secret,
-                                                      grant_type:     "client_credentials"
-                                                    })
+      if @access_token
+        if @access_token[:timestamp] < Time.now - 60*60*20
+          @access_token = get_access_token
+        else
+          @access_token
+        end
+      else
+        @access_token = get_access_token
+      end
     end
   end
 end

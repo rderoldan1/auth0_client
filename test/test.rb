@@ -17,7 +17,7 @@ begin
   p Time.now
   p client.users(criteria: "loginsCount:10")
   p client.users
-  p client.user("auth0|54906433e1c87bbe090f35d4")
+  p client.user("auth0|549498dfbb20ca598beb789d")
   p "Creating users"
   p client.create_user("a@a.com", "121212")
   last_client = client.create_user("b@b.com", "131313", vip: true, last_name: "oelo")
