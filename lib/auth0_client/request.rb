@@ -53,7 +53,7 @@ module Auth0
     private
 
       def error_message(response)
-        "Server responded with code #{response.code}, message: #{response.parsed_response.message}. " \
+        "Server responded with code #{response.code}, message: #{response.parsed_response}. " \
         "Request URI: #{response.request.base_uri}#{response.request.path}"
       end
   end

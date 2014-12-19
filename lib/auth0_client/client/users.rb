@@ -15,10 +15,33 @@ class Auth0::Client
       end
     end
 
-    def get_auth_token
-      @token = authenticate["access_token"]
-      yield
+    def create_user(email, password, options={})
+      get_auth_token do
+        body = {  email: email,
+                  password: password,
+                  connection: "Username-Password-Authentication"#,
+                  # email_verified: false
+                }.merge(options)
+        post("/api/users?access_token=#{@token}", body: body)
+      end
     end
+
+    def update_user_email(user_id, email, options={})
+      get_auth_token do
+        body = {
+          email: email,
+          # verify: false
+        }
+        put("/api/users/#{user_id}/email?access_token=#{@token}", body: body)
+      end
+    end
+
+    private
+
+      def get_auth_token
+        @token = authenticate["access_token"]
+        yield
+      end
 
   end
 end
