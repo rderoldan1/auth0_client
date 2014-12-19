@@ -8,19 +8,19 @@ module Auth0
     headers 'Accept' => 'application/json'
 
     def get(path, options={})
-      validate self.class.get(path, options)
+      validate self.class.get(@endpoint + path, options)
     end
 
     def post(path, options={})
-      validate self.class.get(path, options)
+      validate self.class.post(@endpoint + path, options)
     end
 
     def put(path, options={})
-      validate self.class.get(path, options)
+      validate self.class.put(@endpoint + path, options)
     end
 
     def delete(path, options={})
-      validate self.class.get(path, options)
+      validate self.class.delete(@endpoint + path, options)
     end
 
     # Checks the response code for common errors.
@@ -41,6 +41,21 @@ module Auth0
       response.parsed_response
     end
 
+    # Sets a base_uri and default_params for requests.
+    # @raise [Error::MissingCredentials] if endpoint not set.
+    def set_request_defaults(endpoint, client_id, client_secret)
+      raise Error::MissingCredentials.new("Please set an endpoint to API") unless endpoint
+      @client_id = client_id
+      @endpoint = endpoint
+      @client_secret = client_secret
+    end
+
+    private
+
+      def error_message(response)
+        "Server responded with code #{response.code}, message: #{response.parsed_response.message}. " \
+        "Request URI: #{response.request.base_uri}#{response.request.path}"
+      end
   end
 end
 

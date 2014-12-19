@@ -6,8 +6,8 @@ require 'auth0_client/version'
 Gem::Specification.new do |spec|
   spec.name          = "auth0_client"
   spec.version       = Auth0::VERSION
-  spec.authors       = ["Ruben Espinosa"]
-  spec.email         = ["rderoldan1@gmail.com"]
+  spec.authors       = ["Ruben Espinosa", "Mateo Vidal"]
+  spec.email         = ["rderoldan1@gmail.com", "jvidalba@gmail.com"]
   spec.summary       = %q{Ruby client for Auth0 API.}
   spec.description   = %q{Ruby client for Auth0 API.}
   spec.homepage      = ""
