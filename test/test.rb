@@ -3,7 +3,7 @@
 require 'auth0_client'
 
 Auth0.configure do |config|
-  config.endpoint = "https://jvidalba.auth0.com/api"
+  config.endpoint = "https://jvidalba.auth0.com"
   config.client_id = "vuxwc9oTXYQTPqeeeucO3LAfOEfowGhO"
   config.client_secret = "0PPEPZasLzlWc8MxX8ZvMxgoTOMy30qrKkBLlTHd3ukP8GNFJkmNqqPAYOCpVHv1"
 end
@@ -13,4 +13,15 @@ puts "Auth0.clien_id => #{Auth0.client_id}"
 puts "Auth0.client_secret => #{Auth0.client_secret}"
 
 client = Auth0.client
+p Time.now
 client.users
+client.users
+client.users
+client.users
+client.users
+client.users
+client.users
+client.users
+client.users
+client.users
+p Time.now
