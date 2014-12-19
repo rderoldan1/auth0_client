@@ -16,4 +16,5 @@ client = Auth0.client
 p Time.now
 p client.users(criteria: "loginsCount:10")
 p client.users
+p client.user("auth0|54906433e1c87bbe090f35d4")
 p Time.now

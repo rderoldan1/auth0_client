@@ -8,5 +8,10 @@ class Auth0::Client
       get(path)
     end
 
+    def user(user_id, options={})
+      token = authenticate["access_token"]
+      get("/api/users/#{user_id}?access_token=#{token}")
+    end
+
   end
 end
