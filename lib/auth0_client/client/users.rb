@@ -81,7 +81,7 @@ class Auth0::Client
     # Params:
     #       - email: string
     #       - password: string
-    #       - options: {verify: boolean, send verification email before proceed with the change} 
+    #       - options: {verify: boolean, send verification email before proceed with the change}
     def change_user_password_by_email(email, password, options={})
       get_auth_token do
         body = {
@@ -112,15 +112,5 @@ class Auth0::Client
         delete("/api/users/#{user_id}?access_token=#{@token}")
       end
     end
-
-    private
-
-    # Private: Maintain the session across the requests
-    # Params: Block of code that needs to be authenticated previously
-    def get_auth_token
-      @token = authenticate["access_token"]
-      yield
-    end
-
   end
 end

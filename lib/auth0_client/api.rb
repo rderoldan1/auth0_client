@@ -16,10 +16,10 @@ module Auth0
 
     def get_access_token
       post("/oauth/token", body: {
-                                    client_id:      @client_id,
-                                    client_secret:  @client_secret,
-                                    grant_type:     "client_credentials"
-                                  }).merge({ timestamp: Time.now })
+                             client_id:      @client_id,
+                             client_secret:  @client_secret,
+                             grant_type:     "client_credentials"
+                         }).merge({ timestamp: Time.now })
     end
 
     def authenticate
@@ -33,5 +33,15 @@ module Auth0
         @access_token = get_access_token
       end
     end
+
+    private
+
+    # Private: Maintain the session across the requests
+    # Params: Block of code that needs to be authenticated previously
+    def get_auth_token
+      @token = authenticate["access_token"]
+      yield
+    end
+
   end
 end
