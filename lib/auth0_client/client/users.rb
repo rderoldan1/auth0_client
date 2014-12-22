@@ -29,9 +29,10 @@ class Auth0::Client
 
     #POST Methods
 
-    # Public: Delete a user given an user_id
+    # Public: Create a user given an user_id
     # Params:
-    #       - user_id: string
+    #       - email: string
+    #       - password: string
     #       - options: hash
     # Return: user
     def create_user(email, password, options={})

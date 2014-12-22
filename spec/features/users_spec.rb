@@ -1,4 +1,4 @@
-require 'spec_helper'
+require File.expand_path('../../spec_helper', __FILE__)
 
 describe 'User API Endpoint' do
 
@@ -8,14 +8,14 @@ describe 'User API Endpoint' do
   end
 
   after(:all) do
-    @client.delete_user(@user["user_id"])
+    @client.delete_users
   end
 
   describe "GET methods" do
     it 'should get all users' do
       users = @client.users
-      expect(users.first["email"]).to eq(@user["email"])
-      expect(users.first["user_id"]).to eq(@user["user_id"])
+      expect(users.last["email"]).to eq(@user["email"])
+      expect(users.last["user_id"]).to eq(@user["user_id"])
     end
 
     it 'should get all users with criteria' do
@@ -31,6 +31,16 @@ describe 'User API Endpoint' do
   end
 
   describe "POST methods" do
+
+    it 'should a valid user' do 
+      email = Faker::Internet.email
+      password = Faker::Internet.password
+      new_user = @client.create_user(email, password)
+      expect(new_user).to be_kind_of(Hash)
+
+      expect(new_user["email"]).to eq(email)
+    end
+     
   end
 
   describe "PUT methods" do
