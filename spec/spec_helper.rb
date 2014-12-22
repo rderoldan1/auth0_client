@@ -6,6 +6,7 @@ require 'coveralls'
 require File.expand_path('../../lib/auth0_client', __FILE__)
 
 Coveralls.wear!
+
 RSpec.configure do |config|
 end
 
