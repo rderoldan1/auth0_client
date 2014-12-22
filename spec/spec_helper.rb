@@ -2,12 +2,15 @@ require 'rubygems'
 require 'rspec'
 require 'bundler/setup'
 require 'coveralls'
+require 'factory_girl'
+require 'faker'
 
 require File.expand_path('../../lib/auth0_client', __FILE__)
 
 Coveralls.wear!
 
 RSpec.configure do |config|
+	config.include FactoryGirl::Syntax::Methods 
 end
 
 Auth0.configure do |config|
